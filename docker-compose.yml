@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   frontend:
+    image: alternatif-omg/atlas-frontend
     build:
       context: ./frontend
     ports:
@@ -14,6 +15,7 @@ services:
       - app-network
 
   backend:
+    image: alternatif-omg/atlas-backend
     build:
       context: ./backend
     ports:
