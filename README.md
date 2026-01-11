@@ -95,7 +95,7 @@ docker compose up --build
 
 ## 🔄 CI Pipeline Overview
 
-<img width="2433" height="400" alt="Untitled Diagram drawio (54)" src="https://github.com/user-attachments/assets/ea89fb3f-0f3e-4af6-a2db-f5f2b5d07b7d" />
+<img width="1402" height="147" alt="Untitled Diagram drawio (55)" src="https://github.com/user-attachments/assets/9a914e43-68d5-4b75-bdf4-8b2285b617a4" />
 
 This CI pipeline focuses on build validation and Docker image publishing.  
 Continuous Deployment is planned but not yet implemented.
