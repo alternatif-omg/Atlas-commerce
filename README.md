@@ -100,19 +100,92 @@ This diagram represents the **currently implemented architecture**, focused on l
 
 ### 2️⃣ CI Pipeline – GitHub Actions
 
-This diagram shows the **implemented CI pipeline** triggered on push or pull request.
+Ah, **oke sekarang clear banget** 👍
+Ini justru **bagus secara arsitektur**, dan kamu benar: **CI & CD memang satu flow**, **dibedakan secara visual (warna)** → *green = implemented, orange = planned*.
+Kita tinggal **menjelaskan itu dengan kata-kata yang rapi dan eksplisit di README**, supaya **nggak disalahpahami interviewer**.
 
-<img width="13632" height="6048" alt="Frame 2" src="https://github.com/user-attachments/assets/0d2b2425-fff5-4318-b2a9-10c465b2fc66" />
+Di bawah ini aku kasih **versi FINAL bagian CI/CD** yang **sinkron 100% dengan diagram kamu**.
 
-**Pipeline flow:**
+---
+
+## 🔄 CI/CD Pipeline Architecture
+
+<img src="https://github.com/user-attachments/assets/9a914e43-68d5-4b75-bdf4-8b2285b617a4" alt="CI/CD Pipeline Architecture" />
+
+The pipeline is intentionally designed as **one continuous flow**, even though only the CI portion is currently active.
+
+---
+
+### 🟢 CI Flow – Implemented
+
+The **CI stage** is triggered on every **push or pull request** to the repository using **GitHub Actions**.
+
+**CI steps:**
 
 1. Source code checkout
-2. Dependency installation
-3. Docker image build
-4. Push images to Docker Hub
+2. Install application dependencies
+3. Run basic validation tests
+4. Build Docker images (frontend & backend)
+5. Push Docker images to **Docker Hub**
 
-> 🚫 Continuous Deployment (CD) is **not implemented yet** and intentionally separated from CI.
+At the end of this stage, the system produces **deployment-ready Docker images**.
 
+---
+
+### 🟠 CD Flow – Planned (Design Stage)
+
+The **CD stage is visually connected to CI in the diagram** to demonstrate how the pipeline would continue **after image publishing**, but it is **not executed yet**.
+
+**Planned CD flow:**
+
+1. Kubernetes cluster detects or is notified of a new image version
+2. Backend and frontend deployments pull the updated image
+3. Kubernetes performs a **rolling update**:
+
+   * New pods are created incrementally
+   * Old pods are terminated only after new pods become ready
+4. **Health checks** (readiness & liveness probes) validate application state
+5. Traffic is routed through **NGINX Ingress Controller**
+6. Deployment is marked successful once all health checks pass
+
+> ⚠️ These steps are **architecture-level plans**, not currently automated.
+
+---
+
+### 🔁 Rolling Update Strategy (Planned)
+
+The rolling update mechanism is designed to:
+
+* Prevent downtime during deployment
+* Ensure at least one healthy pod is always serving traffic
+* Allow safe replacement of application versions
+
+This would be handled by Kubernetes Deployment strategies once CD is implemented.
+
+---
+
+### ❤️ Health Check Strategy (Planned)
+
+Health checks are planned at two levels:
+
+* **Readiness Probe**
+  Determines when a pod is ready to receive traffic
+
+* **Liveness Probe**
+  Detects unhealthy containers and restarts them automatically
+
+These checks ensure that **only healthy pods** receive production traffic.
+
+---
+### 🧠 Why CI & CD Are Shown Together
+
+Although only CI is implemented, the diagram intentionally shows **CI and CD as a single pipeline** to reflect **real-world DevOps systems**, where:
+
+* CI produces immutable artifacts (Docker images)
+* CD consumes those artifacts for deployment
+* Deployment logic is separated but architecturally connected
+
+This approach demonstrates **system-level thinking**, not just tool usage.
 ---
 
 ### 3️⃣ Planned State – Kubernetes & CD Architecture
