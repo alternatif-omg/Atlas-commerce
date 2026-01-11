@@ -13,7 +13,8 @@ RUN npm install
 COPY . .
 
 # Expose API port
-EXPOSE 3000
+EXPOSE 5000
 
 # Start in production mode
 CMD ["npm", "run", "start"]
+
