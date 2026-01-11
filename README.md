@@ -1,124 +1,197 @@
-# 🛒 Atlas Commerce – MERN E-Commerce (Docker & CI)
+# 🛒 Atlas Commerce
 
-Atlas Commerce is a MERN Stack (MongoDB, Express, React, Node.js) E-Commerce application used as a DevOps learning and portfolio project.
+**MERN E-Commerce – Dockerized with CI Pipeline**
 
-This repository is a clone and adaptation of the following open-source project:
+Atlas Commerce is a **MERN Stack e-commerce application** used as a **DevOps learning & portfolio project**.
+The main focus of this repository is **containerization, CI automation, and deployment planning**, rather than delivering a fully production-ready application.
 
-🔗 **Original Repository**: [https://github.com/burakorkmez/mern-ecommerce](https://github.com/burakorkmez/mern-ecommerce)
+This project demonstrates how a real-world application **can be progressively evolved** from local Docker-based development into a **Kubernetes-based production system**.
 
-The goal of this repository is to demonstrate foundational DevOps practices, focusing on containerization and continuous integration, rather than full production deployment.
+---
+
+## 📌 Project Background
+
+This repository is an **adaptation and DevOps-focused extension** of the following open-source project:
+
+🔗 **Original Repository**
+👉 [https://github.com/burakorkmez/mern-ecommerce](https://github.com/burakorkmez/mern-ecommerce)
+
+All application features are inherited from the original project, while **infrastructure, containerization, and CI workflows** are implemented and documented independently.
 
 ---
 
 ## 🎯 Project Scope
 
-### ✅ **Implemented**
-- Dockerfile for frontend and backend
-- Multi-service orchestration using Docker Compose
-- Redis running as a containerized service
-- Continuous Integration (CI) using GitHub Actions
-- Docker image build and push to Docker Hub
+### ✅ Implemented (Current State)
 
-### ❌ **Not Implemented Yet**
-- Continuous Deployment (CD)
-- Kubernetes
-- Nginx / reverse proxy
-- Monitoring & logging
-- Production-ready frontend build
+* Dockerfile for **frontend** and **backend**
+* Multi-service orchestration using **Docker Compose**
+* **Redis** as a containerized caching service
+* **CI pipeline** using GitHub Actions
+* Automated **Docker image build & push** to Docker Hub
+* Environment-based configuration for external services
+
+### 🛠️ Planned (Design & Architecture Stage)
+
+* Continuous Deployment (CD)
+* Kubernetes deployment
+* NGINX Ingress / reverse proxy
+* Rolling update & health checks
+* Monitoring & centralized logging (Prometheus + Grafana)
+* Production-ready frontend build
+
+> ⚠️ These components are **intentionally not implemented yet** and are documented as part of the **future DevOps roadmap**, not missing features.
 
 ---
 
 ## ✨ Application Features
-*(Inherited from the original project)*
-- User authentication (JWT)
-- Product listing and product details
-- Shopping cart and checkout flow
-- Order management
-- Admin dashboard
-- Product and user management
+
+*(Inherited from the original MERN project)*
+
+* User authentication (JWT)
+* Product listing & product details
+* Shopping cart & checkout flow
+* Order management
+* Admin dashboard
+* Product & user management
 
 ---
 
 ## 🧱 Tech Stack
 
-### **Application**
-- **Frontend**: React.js (Vite)
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB (external service)
-- **Caching**: Redis
-- **State Management**: Redux Toolkit
-- **Authentication**: JWT
+### Application Layer
 
-### **DevOps**
-- **Containerization**: Docker
-- **Multi-container orchestration**: Docker Compose
-- **CI**: GitHub Actions
-- **Image Registry**: Docker Hub
+* **Frontend:** React.js (Vite)
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB (external – MongoDB Atlas)
+* **Caching:** Redis
+* **Image Storage:** Cloudinary (External)
+* **Payment:** Stripe Cloudinary (External)
+* **Authentication:** JWT
 
----
+### DevOps & Infrastructure
 
-## 🏗️ System Architecture Overview
-
-<img width="9460" height="5492" alt="Frame 1 (3)" src="https://github.com/user-attachments/assets/f03b9046-fc5c-48d3-b28b-561f8daffdeb" />
-
-Atlas Commerce uses a Docker Compose–based architecture for local development and CI validation, combined with external managed services.
-
-### **Application Containers (Docker Compose)**
-- **Frontend**: React application running with Vite development server
-- **Backend**: Node.js / Express REST API
-- **Redis**: Containerized caching service
-
-All containers communicate internally using a Docker bridge network.
-
-### **External Managed Services**
-The following services are not containerized and are accessed via secure environment variables:
-- **MongoDB Atlas** – Primary database
-- **Cloudinary** – Image and media storage for product assets
-- **Stripe** – Payment processing and checkout services
-
-These services are managed externally and accessed by the backend via their official APIs.
+* **Containerization:** Docker
+* **Orchestration:** Docker Compose
+* **CI:** GitHub Actions
+* **Image Registry:** Docker Hub
 
 ---
 
-## 🐳 Run Locally with Docker Compose
+## 🏗️ Architecture Overview
+
+### 1️⃣ Current State – Dockerized Application
+
+This diagram represents the **currently implemented architecture**, focused on local development and CI validation using Docker Compose.
+
+<img width="9460" height="5492" alt="Frame 1 (4)" src="https://github.com/user-attachments/assets/9b0c5f24-105f-4639-a325-d363a80286a7" />
+
+**Key points:**
+
+* Frontend, Backend, and Redis run as isolated containers
+* Internal Docker bridge network for service communication
+* Backend integrates with **external managed services** via environment variables:
+
+  * MongoDB Atlas
+  * Cloudinary
+  * Stripe
+
+---
+
+### 2️⃣ CI Pipeline – GitHub Actions
+
+This diagram shows the **implemented CI pipeline** triggered on push or pull request.
+
+<img width="13632" height="6048" alt="Frame 2" src="https://github.com/user-attachments/assets/0d2b2425-fff5-4318-b2a9-10c465b2fc66" />
+
+**Pipeline flow:**
+
+1. Source code checkout
+2. Dependency installation
+3. Docker image build
+4. Push images to Docker Hub
+
+> 🚫 Continuous Deployment (CD) is **not implemented yet** and intentionally separated from CI.
+
+---
+
+### 3️⃣ Planned State – Kubernetes & CD Architecture
+
+This diagram illustrates the **target architecture design** for future implementation.
+
+<img width="13204" height="11052" alt="Frame 3" src="https://github.com/user-attachments/assets/95173170-ff5f-4d6f-b02d-ab2d5542dace" />
+
+**Planned components:**
+
+* Kubernetes cluster
+* NGINX Ingress Controller
+* Rolling updates & health checks
+* Horizontal scaling (multiple backend replicas)
+* Redis as an internal service
+* Centralized logging & monitoring (Prometheus + Grafana)
+
+This section demonstrates **infrastructure design understanding**, even though the system is not deployed yet.
+
+---
+
+## 🐳 Run Locally (Docker Compose)
 
 ```bash
 docker compose up --build
 ```
 
-### **Available Services**
-- **Frontend**: http://localhost:5173
-- **Backend API**: http://localhost:5000
-- **Redis**: localhost:6379
+### Available Services
+
+| Service     | URL / Port                                     |
+| ----------- | ---------------------------------------------- |
+| Frontend    | [http://localhost:5173](http://localhost:5173) |
+| Backend API | [http://localhost:5000](http://localhost:5000) |
+| Redis       | localhost:6379                                 |
 
 ---
 
-## 🔄 CI Pipeline Overview
+## 🔄 CI/CD Status
 
-<img width="1402" height="147" alt="Untitled Diagram drawio (55)" src="https://github.com/user-attachments/assets/9a914e43-68d5-4b75-bdf4-8b2285b617a4" />
+* ✅ Continuous Integration (CI): **Implemented**
+* 🚧 Continuous Deployment (CD): **Planned**
 
-This CI pipeline focuses on build validation and Docker image publishing.  
-Continuous Deployment is planned but not yet implemented.
+This repository intentionally focuses on **CI reliability and container correctness** before introducing automated deployment.
 
 ---
 
 ## 🙏 Credits
 
-- **Original Author**: [burakorkmez](https://github.com/burakorkmez)
-- **Original Project**: [mern-ecommerce](https://github.com/burakorkmez/mern-ecommerce)
+* **Original Author:** burakorkmez
+* **Original Project:** mern-ecommerce
+
+All application logic credits go to the original author.
 
 ---
 
 ## 📜 License
 
-This project follows the license of the original repository.  
-Please refer to the original repository for license details.
+This project follows the license of the original repository.
+Please refer to the original repository for detailed license information.
 
 ---
 
 ## 👨‍💻 Author
 
-**Atlas Commerce** – DevOps Learning & Portfolio Project  
-by [alternatif-omg](https://github.com/alternatif-omg)
+**Atlas Commerce**
+DevOps Learning & Portfolio Project
+by **alternatif-omg**
 
-Built to learn DevOps fundamentals step by step 🚀
+> Built to understand DevOps fundamentals step by step —
+> from Docker → CI → Kubernetes planning 🚀
+
+---
+
+## Why Some Components Are Not Implemented Yet?
+
+This project is designed as a learning journey.
+Each stage (Docker, CI, CD, Kubernetes) is intentionally separated
+to ensure proper understanding and clean implementation.
+
+Future work is documented as architecture plans rather than unfinished tasks.
+
+
