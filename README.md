@@ -59,7 +59,7 @@ The goal of this repository is to demonstrate foundational DevOps practices, foc
 
 ## 🏗️ System Architecture Overview
 
-<img width="9460" height="5492" alt="Frame 1 (2)" src="https://github.com/user-attachments/assets/91d5d44e-3bd3-43ed-9ab6-a13116868814" />
+<img width="9460" height="5492" alt="Frame 1 (3)" src="https://github.com/user-attachments/assets/f03b9046-fc5c-48d3-b28b-561f8daffdeb" />
 
 Atlas Commerce uses a Docker Compose–based architecture for local development and CI validation, combined with external managed services.
 
