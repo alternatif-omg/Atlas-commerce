@@ -59,7 +59,7 @@ The goal of this repository is to demonstrate foundational DevOps practices, foc
 
 ## 🏗️ System Architecture Overview
 
-![System Architecture](https://github.com/user-attachments/assets/fb85a5eb-87ce-4df9-b965-c8396b3416dc7)
+<img width="9460" height="5492" alt="Frame 1 (2)" src="https://github.com/user-attachments/assets/91d5d44e-3bd3-43ed-9ab6-a13116868814" />
 
 Atlas Commerce uses a Docker Compose–based architecture for local development and CI validation, combined with external managed services.
 
@@ -95,7 +95,7 @@ docker compose up --build
 
 ## 🔄 CI Pipeline Overview
 
-![CI Pipeline](https://github.com/user-attachments/assets/1de13855-5587-4e1a-9ed7-c35815b33b36)
+<img width="2433" height="400" alt="Untitled Diagram drawio (54)" src="https://github.com/user-attachments/assets/ea89fb3f-0f3e-4af6-a2db-f5f2b5d07b7d" />
 
 This CI pipeline focuses on build validation and Docker image publishing.  
 Continuous Deployment is planned but not yet implemented.
