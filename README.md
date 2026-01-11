@@ -184,8 +184,6 @@ Although only CI is implemented, the diagram intentionally shows **CI and CD as 
 * CI produces immutable artifacts (Docker images)
 * CD consumes those artifacts for deployment
 * Deployment logic is separated but architecturally connected
-
-This approach demonstrates **system-level thinking**, not just tool usage.
 ---
 
 ### 3️⃣ Planned State – Kubernetes & CD Architecture
