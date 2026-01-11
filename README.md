@@ -98,14 +98,6 @@ This diagram represents the **currently implemented architecture**, focused on l
 
 ---
 
-### 2️⃣ CI Pipeline – GitHub Actions
-
-Ah, **oke sekarang clear banget** 👍
-Ini justru **bagus secara arsitektur**, dan kamu benar: **CI & CD memang satu flow**, **dibedakan secara visual (warna)** → *green = implemented, orange = planned*.
-Kita tinggal **menjelaskan itu dengan kata-kata yang rapi dan eksplisit di README**, supaya **nggak disalahpahami interviewer**.
-
-Di bawah ini aku kasih **versi FINAL bagian CI/CD** yang **sinkron 100% dengan diagram kamu**.
-
 ---
 
 ## 🔄 CI/CD Pipeline Architecture
