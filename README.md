@@ -110,7 +110,7 @@ Di bawah ini aku kasih **versi FINAL bagian CI/CD** yang **sinkron 100% dengan d
 
 ## 🔄 CI/CD Pipeline Architecture
 
-<img src="https://github.com/user-attachments/assets/9a914e43-68d5-4b75-bdf4-8b2285b617a4" alt="CI/CD Pipeline Architecture" />
+<img width="13632" height="6048" alt="Frame 2" src="https://github.com/user-attachments/assets/ddae5b16-5acf-4631-b46a-45d14159d762" />
 
 The pipeline is intentionally designed as **one continuous flow**, even though only the CI portion is currently active.
 
