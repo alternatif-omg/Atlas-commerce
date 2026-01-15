@@ -13,8 +13,8 @@ dist-ssr
 *.local
 
 .env
-
-
+next.txt
+k8s/secrets-prod.yaml
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
